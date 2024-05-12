@@ -74,7 +74,7 @@ export default function ProductPopup({ lang }: { lang: string }) {
   });
   const variations = getVariations(data.variations);
   const { slug, image, name, unit, description, gallery, tag, quantity } = data;
-  const productUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}/${lang}${ROUTES.PRODUCT}/${slug}`;
+  const productUrl = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${ROUTES.PRODUCT}/${slug}`;
   const handleChange = () => {
     setShareButtonStatus(!shareButtonStatus);
   };

@@ -33,7 +33,7 @@ export default function AccountNav({
         return (
           <Link
             key={item.slug}
-            href={`/${lang}${item.slug}`}
+            href={`${item.slug}`}
             className={`flex items-center cursor-pointer text-sm lg:text-15px text-brand-dark py-3.5 px-3.5 xl:px-4 2xl:px-5 mb-1 ${
               mainPath === menuPath ? 'bg-fill-base font-medium' : 'font-normal'
             }`}

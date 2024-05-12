@@ -32,7 +32,7 @@ const CollectionCard: React.FC<Props> = ({
   const { t } = useTranslation(lang, 'common');
   return (
     <Link
-      href={`/${lang}${href}`}
+      href={`${href}`}
       className="flex flex-col overflow-hidden rounded-md group shadow-card "
     >
       <Image

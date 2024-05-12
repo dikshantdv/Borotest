@@ -18,7 +18,7 @@ function SidebarMenuItem({ className, item, depth = 0, lang }: any) {
         }`}
       >
         <Link
-          href={`/${lang}${ROUTES.SEARCH}`}
+          href={`${ROUTES.SEARCH}`}
           className={cn(
             'flex items-center w-full ltr:text-left rtl:text-right outline-none focus:outline-none focus:ring-0 focus:text-brand-dark',
           )}

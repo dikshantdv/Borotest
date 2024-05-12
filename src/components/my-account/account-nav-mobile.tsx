@@ -39,7 +39,7 @@ export default function AccountNavMobile({
 
   function handleItemClick(slugs: any) {
     setSelectedItem(slugs);
-    router.push(`/${lang}${slugs.slug}`);
+    router.push(`${slugs.slug}`);
   }
   const { mutate: logout } = useLogoutMutation(lang);
 

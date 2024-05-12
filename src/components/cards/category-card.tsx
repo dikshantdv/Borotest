@@ -19,7 +19,7 @@ const CategoryCard: React.FC<Props> = ({ lang, item, href, className }) => {
   const dir = getDirection(lang);
   return (
     <Link
-      href={`/${lang}${href}`}
+      href={`${href}`}
       className={cn('group block w-full text-center', className)}
     >
       <div className="flex max-w-[178px] max-h-[178px] mb-3.5 xl:mb-4 mx-auto rounded-full overflow-hidden bg-fill-thumbnail">

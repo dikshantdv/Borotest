@@ -23,7 +23,7 @@ const CategoryListCard: React.FC<Props> = ({
   const { name, icon } = category;
   const { t } = useTranslation(lang, 'common');
   return (
-    <Link href={`/${lang}${href}`} legacyBehavior>
+    <Link href={`${href}`} legacyBehavior>
       <a
         className={cn(
           'group flex transition',

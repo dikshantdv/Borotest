@@ -29,7 +29,7 @@ const CheckoutCard: React.FC<{ lang: string }> = ({ lang }) => {
     currencyCode: 'USD',
   });
   function orderHeader() {
-    !isEmpty && router.push(`/${lang}${ROUTES.ORDER}`);
+    !isEmpty && router.push(`${ROUTES.ORDER}`);
   }
   const checkoutFooter = [
     {
@@ -90,13 +90,13 @@ const CheckoutCard: React.FC<{ lang: string }> = ({ lang }) => {
       </div>
       <Text className="mt-8">
         {t('text-by-placing-your-order')}{' '}
-        <Link href={`/${lang}${ROUTES.TERMS}`} legacyBehavior>
+        <Link href={`${ROUTES.TERMS}`} legacyBehavior>
           <a className="font-medium underline text-brand">
             {t('text-terms-of-service')}{' '}
           </a>
         </Link>
         {t('text-and')}{' '}
-        <Link href={`/${lang}${ROUTES.PRIVACY}`} legacyBehavior>
+        <Link href={`${ROUTES.PRIVACY}`} legacyBehavior>
           <a className="font-medium underline text-brand">
             {t('text-privacy')}
           </a>
