@@ -135,7 +135,7 @@ export default function ProductPopup({ lang }: { lang: string }) {
 
   function navigateToProductPage() {
     closeModal();
-    router.push(`/${ROUTES.PRODUCT}/${slug}`);
+    router.push(`${ROUTES.PRODUCT}/${slug}`);
   }
 
   useEffect(() => setSelectedQuantity(1), [data.id]);
