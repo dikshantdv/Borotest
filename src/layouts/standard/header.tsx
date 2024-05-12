@@ -79,7 +79,7 @@ function Header({ lang }: { lang: string }) {
               <UserIcon className="text-brand-dark text-opacity-40" />
               <AuthMenu
                 isAuthorized={isAuthorized}
-                href={`/${lang}${ROUTES.ACCOUNT}`}
+                href={`${ROUTES.ACCOUNT}`}
                 btnProps={{
                   children: t('text-sign-in'),
                   onClick: handleLogin,

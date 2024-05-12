@@ -57,7 +57,7 @@ export default function BottomNavigation({ lang }: { lang: string }) {
         >
           <SearchIcon />
         </button>
-        <Link href={`/${lang}${ROUTES.HOME}`} className="shrink-0">
+        <Link href={`${ROUTES.HOME}`} className="shrink-0">
           <span className="sr-only">{t('breadcrumb-home')}</span>
           <HomeIcon />
         </Link>
@@ -68,7 +68,7 @@ export default function BottomNavigation({ lang }: { lang: string }) {
         />
         <AuthMenu
           isAuthorized={isAuthorized}
-          href={`/${lang}${ROUTES.ACCOUNT}`}
+          href={`${ROUTES.ACCOUNT}`}
           btnProps={{
             className: 'shrink-0 focus:outline-none',
             children: <UserIcon />,

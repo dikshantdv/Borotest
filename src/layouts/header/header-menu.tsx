@@ -25,7 +25,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ lang, data, className }) => {
           key={item.id}
         >
           <Link
-            href={`/${lang}${item.path}`}
+            href={`${item.path}`}
             className="relative inline-flex items-center py-2 text-sm font-normal lg:text-15px text-brand-dark group-hover:text-brand before:absolute before:w-0 before:ltr:right-0 rtl:left-0 before:bg-brand before:h-[3px] before:transition-all before:duration-300 before:-bottom-[14px] group-hover:before:w-full ltr:group-hover:before:left-0 rtl:group-hover:before:right-0 lrt:group-hover:before:right-auto rtl:group-hover:before:left-auto"
           >
             {t(item.label)}

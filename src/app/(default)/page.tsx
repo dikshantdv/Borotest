@@ -28,7 +28,6 @@ export default async function Page({
         <BannerGridTwo
           data={banners}
           className="my-3 md:my-4 lg:mt-0 lg:mb-5 xl:mb-6"
-          lang={lang}
         />
         <FeatureGrid lang={lang} />
       </Container>

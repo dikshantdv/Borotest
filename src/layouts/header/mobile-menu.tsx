@@ -77,7 +77,7 @@ export default function MobileMenu({ lang }: { lang: string }) {
       <li className={`transition-colors duration-200 ${className}`}>
         <div className="relative flex items-center justify-between">
           <Link
-            href={`/${lang}${data.path}`}
+            href={`${data.path}`}
             className="relative w-full py-4 transition duration-300 ease-in-out menu-item ltr:pl-5 rtl:pr-5 md:ltr:pl-7 md:rtl:pr-7 ltr:pr-4 rtl:pl-4 text-brand-dark"
           >
             <span className="block w-full" onClick={closeSidebar}>
