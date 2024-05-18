@@ -10,6 +10,8 @@ import { useCart } from '@contexts/cart/cart.context';
 import { productPlaceholder } from '@assets/placeholders';
 import dynamic from 'next/dynamic';
 import { useTranslation } from 'src/app/i18n/client';
+import { ROUTES } from '@utils/routes';
+import { useRouter } from 'next/navigation';
 const AddToCart = dynamic(() => import('@components/product/add-to-cart'), {
   ssr: false,
 });
@@ -58,7 +60,8 @@ const ProductCardAlpine: React.FC<ProductProps> = ({
   lang,
 }) => {
   const { name, image, unit, product_type } = product ?? {};
-  const { openModal } = useModalAction();
+  const router = useRouter();
+
   const { t } = useTranslation(lang, 'common');
   const { price, basePrice, discount } = usePrice({
     amount: product?.sale_price ? product?.sale_price : product?.price,
@@ -75,7 +78,8 @@ const ProductCardAlpine: React.FC<ProductProps> = ({
   });
 
   function handlePopupView() {
-    openModal('PRODUCT_VIEW', product);
+    // openModal('PRODUCT_VIEW', product);
+    router.push(`${ROUTES.PRODUCT}/${product.slug}`);
   }
   return (
     <article
