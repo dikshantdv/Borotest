@@ -74,7 +74,7 @@ const Breadcrumb: React.FC<{ separator?: string; lang: string }> = ({
     <BreadcrumbItems separator={separator}>
       <ActiveLink
         legacyBehavior
-        href={`${ROUTES.HOME}${lang}`}
+        href={`${ROUTES.HOME}`}
         activeClassName="font-semibold text-heading"
         lang={lang}
       >

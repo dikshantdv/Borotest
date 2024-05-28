@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic';
 import { useTranslation } from 'src/app/i18n/client';
 import { ROUTES } from '@utils/routes';
 import { useRouter } from 'next/navigation';
+import { Router } from 'next/router';
 const AddToCart = dynamic(() => import('@components/product/add-to-cart'), {
   ssr: false,
 });
@@ -23,25 +24,27 @@ interface ProductProps {
 }
 function RenderPopupOrAddToCart({ props }: { props: Object }) {
   let { data, lang }: any = props;
+  const router = useRouter();
   // console.log(variant);
   const { t } = useTranslation(lang, 'common');
-  const { id, quantity, product_type } = data ?? {};
+  const { id, variant_count, product_type } = data ?? {};
   const { width } = useWindowSize();
   const { openModal } = useModalAction();
   const { isInCart, isInStock } = useCart();
   const iconSize = width! > 1024 ? '19' : '17';
   const outOfStock = isInCart(id) && !isInStock(id);
   function handlePopupView() {
-    openModal('PRODUCT_VIEW', data);
+    // openModal('PRODUCT_VIEW', data);
+    router.push(`${ROUTES.PRODUCT}/${data.product_id}`);
   }
-  if (Number(quantity) < 1 || outOfStock) {
+  if (Number(2) < 1) {
     return (
       <span className="text-[11px] md:text-xs font-bold text-brand-light uppercase inline-block bg-brand-danger rounded-full px-2.5 pt-1 pb-[3px] mx-0.5 sm:mx-1">
         {t('text-out-stock')}
       </span>
     );
   }
-  if (product_type === 'variable') {
+  if (variant_count > 1) {
     return (
       <button
         className="inline-flex items-center justify-center w-8 h-8 text-4xl rounded-full bg-brand lg:w-10 lg:h-10 text-brand-light focus:outline-none focus-visible:outline-none"
@@ -59,7 +62,7 @@ const ProductCardAlpine: React.FC<ProductProps> = ({
   className,
   lang,
 }) => {
-  const { name, image, unit, product_type } = product ?? {};
+  const { name, images, unit, product_type } = product ?? {};
   const router = useRouter();
 
   const { t } = useTranslation(lang, 'common');
@@ -79,7 +82,7 @@ const ProductCardAlpine: React.FC<ProductProps> = ({
 
   function handlePopupView() {
     // openModal('PRODUCT_VIEW', product);
-    router.push(`${ROUTES.PRODUCT}/${product.slug}`);
+    router.push(`${ROUTES.PRODUCT}/${product.product_id}`);
   }
   return (
     <article
@@ -92,10 +95,21 @@ const ProductCardAlpine: React.FC<ProductProps> = ({
     >
       <div className="relative shrink-0">
         <div className="overflow-hidden mx-auto w-full sm:w-[180px] h-[180px] md:w-[200px] md:h-[200px] transition duration-200 ease-in-out transform group-hover:scale-105 relative">
-          <Image
-            src={image?.thumbnail ?? productPlaceholder}
+          {/* <Image
+            src={images?.[0]?.url ?? productPlaceholder}
             alt={name || 'Product Image'}
             quality={100}
+            priority
+            fill
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+            className="object-cover bg-fill-thumbnail"
+          /> */}
+          <img
+            src={images?.[0]?.url ?? productPlaceholder}
+            alt={name || 'Product Image'}
+            // quality={100}
             priority
             fill
             sizes="(max-width: 768px) 100vw,

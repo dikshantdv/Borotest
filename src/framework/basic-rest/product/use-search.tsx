@@ -6,13 +6,11 @@ import { useQuery } from '@tanstack/react-query';
 export const fetchSearchedProducts = async ({ queryKey }: any) => {
   const options = queryKey[1];
 
-  const { data } = await http.get(API_ENDPOINTS.SEARCH);
+  const { data } = await http.get(
+    `${API_ENDPOINTS.PRODUCTS}?query=${options.text}`,
+  );
 
-  function searchProduct(product: any) {
-    return product.name.toLowerCase().indexOf(options.text.toLowerCase()) > -1;
-  }
-
-  return data.filter(searchProduct);
+  return data;
 };
 export const useSearchQuery = (options: QueryOptionsType) => {
   return useQuery({

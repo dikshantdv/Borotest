@@ -1,3 +1,5 @@
+'use client';
+
 import SectionHeader from '@components/common/section-header';
 import ProductCardAlpine from '@components/product/product-cards/product-card-alpine';
 import { Product } from '@framework/types';
@@ -66,6 +68,7 @@ const ProductsCarousel: React.FC<ProductsCarouselProps> = ({
   const { width } = useWindowSize();
   const dir = getDirection(lang);
   const [sliderEnd, setSliderEnd] = useState(false);
+  console.log(products);
 
   // console.log('sliderEnd', sliderEnd)
 
@@ -77,11 +80,7 @@ const ProductsCarousel: React.FC<ProductsCarouselProps> = ({
       )}
     >
       <div className="flex flex-wrap items-center justify-between mb-5 md:mb-6">
-        <SectionHeader
-          sectionHeading={sectionHeading}
-          className="mb-0"
-          lang={lang}
-        />
+        <SectionHeader sectionHeading={sectionHeading} className="mb-0" />
       </div>
       {error ? (
         <div className="2xl:ltr:pr-10 2xl:rtl:pl-10">

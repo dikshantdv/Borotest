@@ -1,8 +1,7 @@
 import ManagedModal from '@components/common/modal/managed-modal';
 import { ManagedUIContext } from '@contexts/ui.context';
 import { Inter, Manrope } from 'next/font/google';
-import { dir } from 'i18next';
-import { languages } from './i18n/settings';
+
 import ManagedDrawer from '@components/common/drawer/managed-drawer';
 import { Metadata } from 'next';
 import ToasterProvider from 'src/app/provider/toaster-provider';
@@ -47,7 +46,7 @@ export default function RootLayout({
   params: any;
 }) {
   return (
-    <html lang={lang} dir="ltr">
+    <html lang="en" dir="ltr">
       <body className={`${inter.variable} ${manrope.variable}`}>
         <Providers>
           <ManagedUIContext>
