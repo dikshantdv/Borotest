@@ -29,7 +29,7 @@ export const useCart = () => {
 
 export function CartProvider(props: React.PropsWithChildren<any>) {
   const [savedCart, saveCart] = useLocalStorage(
-    `borobazar-cart`,
+    `cart`,
     JSON.stringify(initialState),
   );
   const [state, dispatch] = React.useReducer(
@@ -41,8 +41,10 @@ export function CartProvider(props: React.PropsWithChildren<any>) {
     saveCart(JSON.stringify(state));
   }, [state, saveCart]);
 
-  const addItemToCart = (item: Item, quantity: number) =>
+  const addItemToCart = (item: Item, quantity: number) => {
+    console.log(item, quantity);
     dispatch({ type: 'ADD_ITEM_WITH_QUANTITY', item, quantity });
+  };
   const removeItemFromCart = (id: Item['id']) =>
     dispatch({ type: 'REMOVE_ITEM_OR_QUANTITY', id });
   const clearItemFromCart = (id: Item['id']) =>

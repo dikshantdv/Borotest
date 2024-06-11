@@ -54,7 +54,47 @@ const ProductSingleDetails: React.FC<{ lang: string }> = ({ lang }) => {
     setShareButtonStatus(!shareButtonStatus);
   };
   if (isLoading) return <p>Loading...</p>;
-  const variations = getVariations(data?.variations);
+
+  function transformData(originalData) {
+    // Define the attribute template
+    const attributeTemplate = {
+      id: 3,
+      slug: 'available-in',
+      name: 'Available In',
+      values: [],
+    };
+
+    // Create the values array and the transformed array
+    const valuesArray = [];
+    const transformedArray = [];
+
+    // Iterate over the original data and populate the valuesArray and transformedArray
+    originalData.forEach((item, index) => {
+      const valueObject = {
+        id: index + 8, // Adjust the id to start from 8 as in the example
+        attribute_id: 3,
+        value: item.title.trim(),
+      };
+
+      valuesArray.push(valueObject);
+
+      const transformedObject = {
+        ...valueObject,
+        attribute: { ...attributeTemplate, values: [] }, // Temporarily assign an empty array for values
+      };
+
+      transformedArray.push(transformedObject);
+    });
+
+    // Assign the same valuesArray to each attribute's values field
+    transformedArray.forEach((item) => {
+      item.attribute.values = valuesArray;
+    });
+
+    return transformedArray;
+  }
+
+  const variations = getVariations(transformData(data?.variant ?? []));
 
   const isSelected = !isEmpty(variations)
     ? !isEmpty(attributes) &&
@@ -74,6 +114,7 @@ const ProductSingleDetails: React.FC<{ lang: string }> = ({ lang }) => {
   }
   const item = generateCartItem(data!, selectedVariation);
   const outOfStock = isInCart(item.id) && !isInStock(item.id);
+
   function addToCart() {
     if (!isSelected) return;
     // to show btn feedback while product carting
@@ -81,6 +122,7 @@ const ProductSingleDetails: React.FC<{ lang: string }> = ({ lang }) => {
     setTimeout(() => {
       setAddToCartLoader(false);
     }, 1500);
+    console.log(data, selectedVariation, 'le re beti');
 
     const item = generateCartItem(data!, selectedVariation);
     addItemToCart(item, quantity);

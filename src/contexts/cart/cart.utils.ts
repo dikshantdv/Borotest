@@ -15,6 +15,7 @@ export function addItemWithQuantity(
 ) {
   if (quantity <= 0)
     throw new Error("cartQuantity can't be zero or less than zero");
+
   const existingItemIndex = items.findIndex(
     (existingItem) => existingItem.id === item.id,
   );
